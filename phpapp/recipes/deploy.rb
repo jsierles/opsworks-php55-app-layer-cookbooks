@@ -46,7 +46,7 @@ node[:deploy].each do |application, deploy|
   # set apache2 hosts
   web_app deploy[:application] do
     server_name "#{deploy[:domains].first}"
-    docroot "/var/#{deploy[:application]}/public"
+    docroot "/var/#{deploy[:application]}/#{deploy[:mounted_at]}"
     template "webapp.conf.erb" 
     log_dir node['apache']['log_dir'] 
   end
